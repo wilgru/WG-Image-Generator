@@ -52,11 +52,9 @@ const renderImage = () => {
                 colourIndex = Math.floor(Math.random() * ((palleteLen)))
             } while (usedColours.includes(colourIndex))
 
-
             // add colourIndex to array of used colours
             usedColours.push(colourIndex);
             
-
             // draw the pixel to the canvas
             ctx.fillStyle = 
                 `rgb(
@@ -69,11 +67,9 @@ const renderImage = () => {
             PositionIndex++;
         } 
     }
-
-    console.log(findDuplicates(usedColours))
 }
 
 // add event listener to the HTML button that will call the renderImage function.
 document.getElementById('render-btn').addEventListener('click', ()=>{
-    renderImage()
+    renderImage();
 })
