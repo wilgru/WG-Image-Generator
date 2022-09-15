@@ -12,9 +12,5 @@ git@github.com:wilgru/WG-Image-Generation-Challenge.git
 
 As this is a simple web app that is purely front-end, you can get the app running simply by opening the index.html file in your default browser.
 
-## Time and Space Complexity
-
-
-
 ## Link
 
