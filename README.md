@@ -10,8 +10,7 @@ This algorithm is based on three nested loops, one for each colour channel, wher
 ### Rendering Image
 This algorithm first calculates the size (length in pixels for the side of a square) of a canvas that can accommodate all the colours of the colour palette comfortably. With the size calculated, a loop nested within another loop is used to map over the surface of the canvas, where the incrementing values are used as x/y coordinates when drawing pixels to the canvas. for each iteration, a random colour is selected from the colour palette, and if it hadn’t been used yet it will be used. If it has been used, then a new colour will be randomly selected until an unused colour is selected.
 
-## Technology
-
+For the offset rendering option, the algorithm will iterate over the palette, but in steps selected by the user using the slider. whenever the iterator exceeds the length of the colour palette, the iterator will start again from the beginning but this time offset by 1 position, to ensure no colours are being used twice.
 
 ## Installation
 You can clone the repo onto your computer using the following command:
