@@ -23,9 +23,9 @@ As this is a simple web app that is purely front-end, you can get the app runnin
 
 ## Links
 Alternatively, you can follow this link to a deployed version of the app, linked here:  
-https://wilgru.github.io/WG-Image-Generation-Challenge/ 
+https://wilgru.github.io/WG-Image-Generator/
 
 View the GitHub repo here:  
-https://github.com/wilgru/WG-Image-Generation-Challenge 
+https://github.com/wilgru/WG-Image-Generator 
 
 
