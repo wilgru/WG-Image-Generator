@@ -5,28 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WG Image Generation Challenge</title>
+    <style>
+        * {
+            font-family:'Courier New', Courier, monospace
+        }
+        button {
+            margin: 3px;
+            height: fit-content;
+        }
+    </style>
 </head>
 <body>
     <div style="display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
-        <div id="render-controls" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
-            <h3 style="font-family:'Courier New', Courier, monospace">
+        <header style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+            <h3>
                 Generate an image where every pixel is a unique colour, using one of the rendering options below.
             </h3>
-            <div style="display: flex;">
+            <div id="render-controls" style="display: flex; align-items: center;">
                 <button id="render-noise-btn">
                     Generate Noise
                 </button>
                 <button id="render-linear-btn">
                     Generate 'Linear'
                 </button>
-                <button id="render-offset-btn">
-                    Generate 'Offset' 
-                </button>
-                <input type="range" min="1" max="64" value="32" class="slider" id="render-offset-slider">
+                <div style="border: 1px solid lightgray; display: flex; padding: 2px;">
+                    <button id="render-offset-btn">
+                        Generate 'Offset' 
+                    </button>
+                    <input type="range" min="1" max="64" value="32" class="slider" id="render-offset-slider">
+                </div>
+                
             </div>
-        </div>
+        </header>
         <div id="render-output" style="width: fit-content;">
-            <canvas id="myCanvas" width="720" height="720">
+            <canvas id="myCanvas" width="650" height="650">
                 Your browser does not support the HTML5 canvas tag.
             </canvas>
         </div>
