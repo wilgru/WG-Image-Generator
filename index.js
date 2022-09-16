@@ -52,7 +52,6 @@ const renderImage = (colourpalette, renderType, modifier=1) => {
 
             // if PositionI has reached the length of the colour palette, then stop rendering
             if (PositionI >= paletteLen || usedColours.length >= paletteLen) {
-                
                 break;
             }
 
@@ -115,10 +114,3 @@ document.getElementById('render-offset-btn').addEventListener('click', () => {
     console.log(sliderVal)
     renderImage(cp, "offset", sliderVal);
 })
-
-// for (let i = 0; i < a.length; i++) {
-//     let count = i*4
-//     console.log("count " + count)
-//     //console.log(Math.floor((count)/a.length))
-//     console.log((count%a.length)+Math.floor((count)/a.length))
-// }
