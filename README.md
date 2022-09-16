@@ -1,4 +1,4 @@
-# Image Generation Challenge
+# Image Generator
 
 ## Description
 This small web app generates a noise image using unique colours, made from a combination of RGB values. Each RGB value is a combination of values from 0 to 256 with 32 steps per colour channel. In total there are 32,768 colours in the palette for the image generation process to use,  with no repetition or reuse of colours. 
