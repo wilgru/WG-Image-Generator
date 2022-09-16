@@ -10,19 +10,19 @@
     <div style="display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
         <div id="render-controls" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
             <h3 style="font-family:'Courier New', Courier, monospace">
-                Generate a random noise image where every pixel is a unique colour
+                Generate an image where every pixel is a unique colour, using one of the rendering options below.
             </h3>
             <div style="display: flex;">
                 <button id="render-noise-btn">
                     Generate Noise
                 </button>
                 <button id="render-linear-btn">
-                    Generate Linear
+                    Generate 'Linear'
                 </button>
-                <button id="render-algorithm-btn">
-                    Generate Algorithm
+                <button id="render-offset-btn">
+                    Generate 'Offset' 
                 </button>
-                <input type="range" min="1" max="64" value="32" class="slider" id="render-algorithm-slider">
+                <input type="range" min="1" max="64" value="32" class="slider" id="render-offset-slider">
             </div>
         </div>
         <div id="render-output" style="width: fit-content;">
