@@ -13,6 +13,9 @@ class rgb {
     }
 }
 
+// find duplicates in an array
+const findDuplicates = array => array.filter((item, index) => array.indexOf(item) !== index)
+
 // create array of colours
 const generatePalette = () => {
     colourpalette = [];
@@ -31,46 +34,91 @@ const generatePalette = () => {
 }
 
 // render a randomly generated noise image that uses all colours only once
-const renderImage = (colourpalette) => {
-    let PositionIndex = 0;
-    let colourIndex = 0;
+const renderImage = (colourpalette, renderType, modifier=1) => {   
+
+    paletteLen = colourpalette.length;
+    size = Math.round(Math.sqrt(paletteLen) / 100) * 100; // get number of colours and the size of a square that would fit all the colours as pixels
+
+    let PositionI = 0;
+    let colourI = 0;
     let usedColours = [];
 
-    // get number of colours and the size of a square that would fit all the colours as pixels
-    paletteLen = colourpalette.length;
-    size = Math.round(Math.sqrt(paletteLen) / 100) * 100;
+    let algoI = 0;
+    let algoIOffset = 0;
 
+    // loop over canvas x and y positions
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
 
-            // if PositionIndex has reached the length of the colour palette, then stop rendering
-            if (PositionIndex >= paletteLen) {
+            // if PositionI has reached the length of the colour palette, then stop rendering
+            if (PositionI >= paletteLen || usedColours.length >= paletteLen) {
+                
                 break;
             }
 
-            // generate random colourIndex for next colour until a unique one has been generated
-            do {
-                colourIndex = Math.floor(Math.random() * ((paletteLen)))
-            } while (usedColours.includes(colourIndex))
+            // use the rendering alogithm chosen by the user
+            switch (renderType) {
+                case "noise": // generate random colourI for next colour until a unique one has been generated
+                    do {
+                        colourI = Math.floor(Math.random() * ((paletteLen)))
+                    } while (usedColours.includes(colourI)); 
+                    break;
 
-            usedColours.push(colourIndex);
+                case "offset": // Iterate through palette in user defined steps multiple times, with each iterate offset by 1 (to ensure usage of all unique colours)
+                    if (colourI >= paletteLen) {
+                        algoI = 0;
+                        algoIOffset++;
+                    }
+
+                    colourI = (algoI * modifier) + algoIOffset;
+                    algoI++;
+                    console.log(colourI)
+                    break;
+
+                case "linear": // Iterate through palette in a linear fashion
+                    colourI = PositionI;
+                    break;
+            }
+
+            usedColours.push(colourI);
             
             // draw the pixel to the canvas
             ctx.fillStyle = 
                 `rgb(
-                    ${colourpalette[colourIndex]?.red}, 
-                    ${colourpalette[colourIndex]?.green}, 
-                    ${colourpalette[colourIndex]?.blue}
+                    ${colourpalette[colourI]?.red}, 
+                    ${colourpalette[colourI]?.green}, 
+                    ${colourpalette[colourI]?.blue}
                 )`;
             ctx.fillRect(j * 4, i * 4, 4, 4);
     
-            PositionIndex++;
+            PositionI++;
         } 
     }
+
+    console.log("duplcates found:", findDuplicates(usedColours))
 }
 
 // add event listener to the HTML button that will call the renderImage function.
-document.getElementById('render-btn').addEventListener('click', () => {
+document.getElementById('render-noise-btn').addEventListener('click', () => {
     const cp = generatePalette();
-    renderImage(cp);
+    renderImage(cp, "noise");
 })
+
+document.getElementById('render-linear-btn').addEventListener('click', () => {
+    const cp = generatePalette();
+    renderImage(cp, "linear");
+})
+
+document.getElementById('render-offset-btn').addEventListener('click', () => {
+    let sliderVal = document.getElementById('render-offset-slider').value
+    const cp = generatePalette();
+    console.log(sliderVal)
+    renderImage(cp, "offset", sliderVal);
+})
+
+// for (let i = 0; i < a.length; i++) {
+//     let count = i*4
+//     console.log("count " + count)
+//     //console.log(Math.floor((count)/a.length))
+//     console.log((count%a.length)+Math.floor((count)/a.length))
+// }
